@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<title>sss</title>
+		<script type="text/javascript">function getS(topicItem){
+			$.ajax({
+					type: "POST",
+					url: "/getCheck/",
+					data : {
+						"topicID" : topicItem.id ,
+						"userID" : topicItem.title
+					} ,
+					success: function(msg){
+						alert("suu");
+					},
+        			error : function(msg){
+        				alert("err");
+					}
+		})}
+		</script>
+	</head>
+
+	<body>
+		<script type="text/javascript" src="{{ STATIC_URL }} /static/jquery-1.9.1.min.js"></script>
+		<ol>
+			{% for row in rows %}
+			<li>
+				<a id="{{ row.url }}" href="http://tieba.baidu.com/p/{{ row.url }}"  target="view_window" title="{{ row.userID }}" onclick="getS(this);">{{ row.title }}</a>
+			</li>
+			{% endfor %}
+		</ol>
+	</body>
+</html>
